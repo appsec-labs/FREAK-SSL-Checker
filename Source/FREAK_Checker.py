@@ -26,6 +26,9 @@ def FreakFilter(output,host):
     if 'gethostbyname failure' in str(output):
             print(host + " cannot be reached. Exiting...");
             return;
+    if not('CONNECTED') in str(output):
+            print("Could Not connect to host:" +host);
+            return;
     print("Running...");
     time.sleep(1);
     print("* Cipher tested");
@@ -33,7 +36,6 @@ def FreakFilter(output,host):
     print("* Export cipher tested");
     time.sleep(2);
     print("Scan completed !");
-	
     if ("alert handshake failure" in str(output)):
         print("Your host (" + host + ") is Safe");
     else:
