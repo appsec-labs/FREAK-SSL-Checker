@@ -14,7 +14,7 @@ def runModule(hostname):
         ps = subprocess.Popen(strFullCmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT);
         output = ps.communicate()[0];   
         #output, err = proc.communicate();
-       
+        print(output);
         return output;
 
 import sys   
@@ -36,7 +36,7 @@ def FreakFilter(output,host):
     print("* Export cipher tested");
     time.sleep(2);
     print("Scan completed !");
-    if ("alert handshake failure" in str(output)):
+    if ("Cipher is (NONE)" in str(output)):
         print("Your host (" + host + ") is Safe");
     else:
         print("Your host (" + host + ") is Vulnerable");
